@@ -14,7 +14,7 @@ const AboutContainer = () => {
     >
       <div className="about_box">
         <figure>
-          <img src={profile} alt="profile" />
+          <img src={profile} alt="profile" loading="lazy" />
         </figure>
 
         <h1>Samuel Morse</h1>

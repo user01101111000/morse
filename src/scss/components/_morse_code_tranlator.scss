@@ -52,21 +52,34 @@
         }
       }
 
-      #base_text {
+      .base_text {
         width: 100%;
 
         border: none;
         outline: none;
         resize: none;
-
+        font-weight: 500 !important;
         background-color: transparent;
         color: rgba(255, 255, 255, 0.9);
         padding: 1rem;
         line-height: 1.5;
+        letter-spacing: 0.5px;
 
         &::placeholder {
           color: rgba(255, 255, 255, 0.466);
         }
+
+        &::-webkit-scrollbar {
+          width: 0.3rem !important;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: colors.$purple-light-extra !important;
+        }
+      }
+      .extra {
+        letter-spacing: 4px;
+        font-weight: 500 !important;
       }
     }
   }

@@ -1,10 +1,11 @@
 import { useFormik } from "formik";
 import { IMorseCodeTranlatorInputs } from "../../../types/components/MorseCodeTranlator";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { FaRegCopy } from "react-icons/fa6";
 import { LuEraser } from "react-icons/lu";
 import { Tooltip } from "react-tooltip";
 import { useNavigate } from "react-router-dom";
+import text_to_morse_code from "../../../utils/text_to_morse_code";
 
 const MorseCodeTranlator: FC = () => {
   const [clickedCopy, setClickedCopy] = useState<boolean>(false);
@@ -18,10 +19,12 @@ const MorseCodeTranlator: FC = () => {
         base_text: "",
         morse_code: "",
       },
-      onSubmit: (values) => {
-        console.log(values);
-      },
+      onSubmit: () => {},
     });
+
+  useEffect(() => {
+    setFieldValue("morse_code", text_to_morse_code(values.base_text));
+  }, [values.base_text]);
 
   return (
     <form className="morse_code_translator" autoComplete="off">
@@ -73,7 +76,7 @@ const MorseCodeTranlator: FC = () => {
           </div>
           <textarea
             name="base_text"
-            id="base_text"
+            className="base_text"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.base_text}
@@ -107,7 +110,7 @@ const MorseCodeTranlator: FC = () => {
           </div>
           <textarea
             name="morse_code"
-            id="base_text"
+            className="base_text extra"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.morse_code}
