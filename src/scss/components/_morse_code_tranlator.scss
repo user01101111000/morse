@@ -8,12 +8,26 @@
   flex-direction: column;
   gap: clamp(1rem, 4vw, 2rem);
 
+  .languages_boxes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1rem;
+    .language_button {
+      padding: 0.7rem !important;
+    }
+
+    .active {
+      background-color: colors.$purple-light-extra;
+    }
+  }
+
   h1 {
     text-align: center;
     color: rgba(255, 255, 255, 0.8);
     font-size: clamp(1rem, 4vw, 1.5rem);
     font-weight: 400;
-    user-select: none;
     line-height: 1.2;
 
     a {

@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import profile from "../../assets/images/samuel_morse.webp";
+import profile2 from "../../assets/images/samuel_morse2.webp";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const AboutContainer = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   return (
@@ -13,24 +16,22 @@ const AboutContainer = () => {
       className="about"
     >
       <div className="about_box">
-        <figure>
-          <img src={profile} alt="profile" loading="lazy" />
-        </figure>
-
-        <h1>Samuel Morse</h1>
+        <h1>
+          <span>._ _. </span>Samuel Morse<span> ._ _.</span>
+        </h1>
 
         <p>
-          Samuel Morse (1791–1872) was an American inventor, painter, and
-          co-developer of the Morse code, a breakthrough system for
-          long-distance communication. Initially trained as a painter, Morse
-          studied at Yale and showed a keen interest in both the arts and
-          emerging science, particularly in electricity. He became a respected
-          artist, known for his portraits, and traveled to Europe to refine his
-          painting skills. However, his path took a dramatic turn in the 1830s,
-          leading him to focus on telegraphy and communication technology.
+          <figure>
+            <img src={profile} alt="profile" loading="lazy" />
+          </figure>
+          {t("about.about_samuel_morse")}
+          <figure>
+            <img src={profile2} alt="profile" loading="lazy" />
+          </figure>
+          {t("about.about_samuel_morse2")}
         </p>
 
-        <button onClick={() => navigate("/")}>Go Home</button>
+        <button onClick={() => navigate("/")}>{t("about.go_home")}</button>
       </div>
     </motion.section>
   );

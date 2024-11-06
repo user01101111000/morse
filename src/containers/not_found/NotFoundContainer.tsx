@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const NotFoundContainer = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   return (
@@ -10,8 +12,8 @@ const NotFoundContainer = () => {
       animate={{ opacity: 1 }}
       className="not_found"
     >
-      <h1>Page Not Found !</h1>
-      <button onClick={() => navigate("/")}>Go Home</button>
+      <h1>{t("not_found.title")}</h1>
+      <button onClick={() => navigate("/")}>{t("about.go_home")}</button>
     </motion.section>
   );
 };

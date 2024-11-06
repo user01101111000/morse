@@ -6,8 +6,11 @@ import { LuEraser } from "react-icons/lu";
 import { Tooltip } from "react-tooltip";
 import { useNavigate } from "react-router-dom";
 import text_to_morse_code from "../../../utils/text_to_morse_code";
+import { useTranslation } from "react-i18next";
 
 const MorseCodeTranlator: FC = () => {
+  const { t, i18n } = useTranslation();
+
   const [clickedCopy, setClickedCopy] = useState<boolean>(false);
   const [clickedCopy2, setClickedCopy2] = useState<boolean>(false);
 
@@ -28,27 +31,37 @@ const MorseCodeTranlator: FC = () => {
 
   return (
     <form className="morse_code_translator" autoComplete="off">
-      <h1>
-        The term{" "}
-        <a href="https://en.wikipedia.org/wiki/Morse_code" target="_blank">
-          Morse Code
-        </a>{" "}
-        refers to either of two systems for representing letters of the
-        alphabet, numerals, and punctuation marks by an arrangement of dots,
-        dashes, and spaces. The codes are transmitted as electrical pulses of
-        varied lengths or analogous mechanical or visual signals, such as
-        flashing lights.
-      </h1>
+      <div className="languages_boxes">
+        <button
+          className={`language_button${
+            i18n.language === "en" ? " active" : ""
+          }`}
+          type="button"
+          onClick={() => i18n.changeLanguage("en")}
+        >
+          en
+        </button>
+        <button
+          className={`language_button${
+            i18n.language === "az" ? " active" : ""
+          }`}
+          type="button"
+          onClick={() => i18n.changeLanguage("az")}
+        >
+          az
+        </button>
+      </div>
+      <h1>{t("home.title")}</h1>
 
       <div className="input_boxes">
         <div className="input_box">
           <div className="input_box_tools">
             <div className="input_box_tools_header">
-              <h2>Text</h2>
+              <h2>{t("home.text")}</h2>
               <FaRegCopy
                 data-tooltip-id="copy_tooltip"
                 data-tooltip-content={
-                  clickedCopy ? "Copied 💜" : "Click to copy"
+                  clickedCopy ? t("home.copied") : t("home.copy")
                 }
                 className="input_box_tools_icon"
                 onClick={() => {
@@ -65,7 +78,7 @@ const MorseCodeTranlator: FC = () => {
             <div className="input_box_tools_footer">
               <LuEraser
                 data-tooltip-id="clear_tooltip"
-                data-tooltip-content="Clear all"
+                data-tooltip-content={t("home.clear")}
                 className="input_box_tools_icon"
                 onClick={() => {
                   setFieldValue("base_text", "");
@@ -81,14 +94,14 @@ const MorseCodeTranlator: FC = () => {
             onBlur={handleBlur}
             value={values.base_text}
             rows={7}
-            placeholder="Enter your text"
+            placeholder={t("home.enter_text")}
           ></textarea>
         </div>
 
         <div className="input_box">
           <div className="input_box_tools">
             <div className="input_box_tools_header">
-              <h2>Morse Code</h2>
+              <h2>{t("home.morse_code")}</h2>
               <FaRegCopy
                 data-tooltip-id="copy_tooltip"
                 data-tooltip-content={
@@ -121,7 +134,7 @@ const MorseCodeTranlator: FC = () => {
       </div>
 
       <button type="button" onClick={() => navigate("/about")}>
-        About Samuel Morse
+        {t("home.about_button")}
       </button>
     </form>
   );
