@@ -16,9 +16,7 @@ const AboutContainer = () => {
       className="about"
     >
       <div className="about_box">
-        <h1>
-          <span>._ _. </span>Samuel Morse<span> ._ _.</span>
-        </h1>
+        <h1>Samuel Morse</h1>
 
         <p>
           <figure>

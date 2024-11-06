@@ -9,3 +9,12 @@
   background-color: colors.$purple-light-extra;
   color: colors.$base-color;
 }
+
+::-webkit-scrollbar {
+  width: 0.3rem !important;
+  background-color: colors.$base-color !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: colors.$purple-light-extra !important;
+}

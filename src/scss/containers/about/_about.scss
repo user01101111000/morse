@@ -14,12 +14,8 @@
     color: rgba(255, 255, 255, 0.8);
     font-size: clamp(1.2rem, 4vw, 2rem);
     font-weight: bold;
-    user-select: none;
-    line-height: 1.2;
 
-    span {
-      color: colors.$purple-light-extra;
-    }
+    line-height: 1.2;
   }
 
   .about_box {

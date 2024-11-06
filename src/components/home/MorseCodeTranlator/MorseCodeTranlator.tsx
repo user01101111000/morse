@@ -6,7 +6,10 @@ import { LuEraser } from "react-icons/lu";
 import { Tooltip } from "react-tooltip";
 import { useNavigate } from "react-router-dom";
 import text_to_morse_code from "../../../utils/text_to_morse_code";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
+import { FaVolumeUp } from "react-icons/fa";
+import { IoMdDownload } from "react-icons/io";
+import { play_morse_code } from "../../../utils/morse_code_audio";
 
 const MorseCodeTranlator: FC = () => {
   const { t, i18n } = useTranslation();
@@ -51,7 +54,19 @@ const MorseCodeTranlator: FC = () => {
           az
         </button>
       </div>
-      <h1>{t("home.title")}</h1>
+      <h1>
+        <Trans
+          i18nKey="home.title"
+          components={{
+            1: (
+              <a
+                target="_blank"
+                href="https://www.britannica.com/topic/Morse-Code"
+              />
+            ),
+          }}
+        />
+      </h1>
 
       <div className="input_boxes">
         <div className="input_box">
@@ -116,10 +131,29 @@ const MorseCodeTranlator: FC = () => {
                   }, 500);
                 }}
               />
+              <FaVolumeUp
+                data-tooltip-id="volume_tooltip"
+                data-tooltip-content="Play audio"
+                className="input_box_tools_icon"
+                onClick={() => {
+                  if (values.morse_code) play_morse_code(values.morse_code);
+                }}
+              />
+
               <Tooltip place="top" id="copy_tooltip" />
+              <Tooltip place="top" id="volume_tooltip" />
             </div>
 
-            <div className="input_box_tools_footer"></div>
+            <div className="input_box_tools_footer">
+              <IoMdDownload
+                data-tooltip-id="download_tooltip"
+                data-tooltip-content="Download audio"
+                className="input_box_tools_icon"
+                onClick={() => {}}
+              />
+
+              <Tooltip place="top" id="download_tooltip" />
+            </div>
           </div>
           <textarea
             name="morse_code"
