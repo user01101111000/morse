@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Tooltip } from "react-tooltip";
 
 const LanguageBox = () => {
   const { i18n } = useTranslation();
@@ -9,6 +10,8 @@ const LanguageBox = () => {
         className={`language_button${i18n.language === "en" ? " active" : ""}`}
         type="button"
         onClick={() => i18n.changeLanguage("en")}
+        data-tooltip-id="en"
+        data-tooltip-content="English"
       >
         <figure>
           <img
@@ -21,6 +24,8 @@ const LanguageBox = () => {
         className={`language_button${i18n.language === "az" ? " active" : ""}`}
         type="button"
         onClick={() => i18n.changeLanguage("az")}
+        data-tooltip-id="az"
+        data-tooltip-content="Azerbaijani"
       >
         <figure>
           <img
@@ -34,6 +39,8 @@ const LanguageBox = () => {
         className={`language_button${i18n.language === "tr" ? " active" : ""}`}
         type="button"
         onClick={() => i18n.changeLanguage("tr")}
+        data-tooltip-id="tr"
+        data-tooltip-content="Turkish"
       >
         <figure>
           <img
@@ -42,6 +49,10 @@ const LanguageBox = () => {
           />
         </figure>
       </button>
+
+      <Tooltip id="tr" />
+      <Tooltip id="en" />
+      <Tooltip id="az" />
     </div>
   );
 };

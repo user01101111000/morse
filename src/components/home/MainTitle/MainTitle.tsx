@@ -1,4 +1,6 @@
 import { Trans, useTranslation } from "react-i18next";
+import { FaGithub } from "react-icons/fa";
+import { Tooltip } from "react-tooltip";
 
 const MainTitle = () => {
   const { t } = useTranslation();
@@ -12,7 +14,19 @@ const MainTitle = () => {
             1: (
               <a
                 target="_blank"
-                href="https://www.britannica.com/topic/Morse-Code"
+                href="https://en.wikipedia.org/wiki/Morse_code"
+              />
+            ),
+            2: (
+              <a
+                target="_blank"
+                href="https://en.wikipedia.org/wiki/Samuel_Morse"
+              />
+            ),
+            3: (
+              <a
+                target="_blank"
+                href="https://en.wikipedia.org/wiki/Alfred_Vail"
               />
             ),
           }}
@@ -22,6 +36,14 @@ const MainTitle = () => {
       <div className="about_variables">
         <p>fr : {t("home.fr")}</p>
         <p>sp : {t("home.sp")}</p>
+        <a href="https://github.com/user01101111000/morse" target="_blank">
+          <FaGithub
+            data-tooltip-id="github"
+            data-tooltip-content="Github"
+            className="social_icon"
+          />
+        </a>
+        <Tooltip id="github" />
       </div>
     </div>
   );

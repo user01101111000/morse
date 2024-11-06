@@ -3,7 +3,7 @@
 .layout {
   min-height: 100dvh;
   width: 100%;
-
+  padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,11 +14,11 @@
   overflow-x: hidden;
   background: linear-gradient(
     45deg,
-    colors.$base-color,
+    #2b0820,
     #1f0818,
-    colors.$base-color,
+    #2b0820,
     #1f0818,
-    colors.$base-color
+    #2b0820
   );
   background-size: 400% 400%;
   animation: gradient 10s ease infinite;
