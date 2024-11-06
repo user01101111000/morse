@@ -1,5 +1,11 @@
 @forward "../fonts/fonts";
+@use "../base/color" as colors;
 
 :root {
   font-family: Geist, sans-serif;
+}
+
+::selection {
+  background-color: colors.$purple-light-extra;
+  color: colors.$base-color;
 }

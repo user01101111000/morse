@@ -18,7 +18,7 @@ const routes: RouteObject[] = [
         element: <About />,
       },
       {
-        path: "/not_found",
+        path: "*",
         element: <NotFound />,
       },
     ],
