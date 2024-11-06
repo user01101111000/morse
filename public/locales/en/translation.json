@@ -6,17 +6,14 @@
     "copy": "Click to copy",
     "copied": "Copied 💜",
     "clear": "Clear all",
+    "audio": "Play audio",
     "enter_text": "Enter your text",
-    "about_button": "About Samuel Morse"
-  },
-
-  "about": {
-    "about_samuel_morse": "Samuel Morse (1791–1872) was an American inventor, painter, and co-developer of the Morse code, a breakthrough system for long-distance communication. Initially trained as a painter, Morse studied at Yale and showed a keen interest in both the arts and emerging science, particularly in electricity. He became a respected artist, known for his portraits, and traveled to Europe to refine his painting skills. However, his path took a dramatic turn in the 1830s, leading him to focus on telegraphy and communication technology. In 1832, Morse had the inspiration for the electric telegraph on a voyage from Europe to the United States. His design for a single-wire telegraph, which he patented in 1837, proved more practical than previous multi-wire models. Morse then collaborated with Alfred Vail, who helped him improve and scale his design. Morse and Vail developed the code that became Morse code, a system using dots and dashes to represent letters and numbers. This allowed for the efficient transmission of messages across vast distances.",
-    "about_samuel_morse2": " Morse sent his first successful message over a long-distance telegraph line in 1844, transmitting the words, `What hath God wrought` from Washington, D.C., to Baltimore, a historic milestone in communications. Morse’s telegraph and Morse code had a profound impact, transforming industries, military communications, and everyday life by making real-time long-distance communication possible for the first time. Morse’s contributions laid a foundation for future technological advancements and earned him a lasting legacy in both science and history.",
-    "go_home": "Go Home"
+    "fr": "Frequency",
+    "sp": "Speed"
   },
 
   "not_found": {
-    "title": "Page not found !"
+    "title": "Page not found !",
+    "go_home": "Go Home"
   }
 }

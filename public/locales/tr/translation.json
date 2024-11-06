@@ -1,0 +1,19 @@
+{
+  "home": {
+    "text": "Metin",
+    "morse_code": "Mors kodu",
+    "title": "<1>Morse Kodu</1> terimi, alfabenin harflerini, rakamlarını ve noktalama işaretlerini nokta, çizgi ve boşluk düzenlemesiyle temsil eden iki sistemden birini ifade eder. Kodlar, çeşitli uzunluklardaki elektrik darbeleri veya yanıp sönen ışıklar gibi benzer mekanik veya görsel sinyaller olarak iletilir.",
+    "copy": "Kopyalamak için tıkla",
+    "copied": "Kopyalandı 💜",
+    "clear": "Hespini sil",
+    "audio": "Sesi oynat",
+    "enter_text": "Metin girin",
+    "fr": "Sıklık",
+    "sp": "Hız"
+  },
+
+  "not_found": {
+    "title": "Sayfa bulunamadı !",
+    "go_home": "Ana sayfaya git"
+  }
+}

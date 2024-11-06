@@ -1,3 +1,5 @@
+import LanguageBox from "../../components/home/LanguageBox/LanguageBox";
+import MainTitle from "../../components/home/MainTitle/MainTitle";
 import MorseCodeTranlator from "../../components/home/MorseCodeTranlator/MorseCodeTranlator";
 import { motion } from "framer-motion";
 
@@ -9,6 +11,8 @@ const HomeContainer = () => {
       transition={{ duration: 0.5 }}
       className="home"
     >
+      <LanguageBox />
+      <MainTitle />
       <MorseCodeTranlator />
     </motion.section>
   );

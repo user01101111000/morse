@@ -1,0 +1,40 @@
+@use "../base/color" as colors;
+
+.languages_boxes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 1rem;
+  .language_button {
+    figure {
+      cursor: pointer;
+
+      width: 2rem;
+      height: auto;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .active {
+    background-color: colors.$purple-light-extra;
+  }
+
+  button {
+    padding: 1rem;
+    font-size: clamp(0.8rem, 3vw, 1rem);
+    border: 1px solid colors.$purple-light;
+    background-color: colors.$purple-dark;
+    color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: colors.$purple-light;
+    }
+  }
+}

@@ -4,20 +4,22 @@ import { FC, useEffect, useState } from "react";
 import { FaRegCopy } from "react-icons/fa6";
 import { LuEraser } from "react-icons/lu";
 import { Tooltip } from "react-tooltip";
-import { useNavigate } from "react-router-dom";
 import text_to_morse_code from "../../../utils/text_to_morse_code";
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { FaVolumeUp } from "react-icons/fa";
 import { IoMdDownload } from "react-icons/io";
 import { play_morse_code } from "../../../utils/morse_code_audio";
+import { text_to_audio } from "../../../utils/text_to_audio";
 
 const MorseCodeTranlator: FC = () => {
-  const { t, i18n } = useTranslation();
+  const [fr, setFr] = useState<number>(440);
+  const [sp, setSp] = useState<number>(150);
+  const [playing, setPlaying] = useState<boolean>(false);
+
+  const { t } = useTranslation();
 
   const [clickedCopy, setClickedCopy] = useState<boolean>(false);
   const [clickedCopy2, setClickedCopy2] = useState<boolean>(false);
-
-  const navigate = useNavigate();
 
   const { values, handleChange, handleBlur, setFieldValue } =
     useFormik<IMorseCodeTranlatorInputs>({
@@ -34,40 +36,6 @@ const MorseCodeTranlator: FC = () => {
 
   return (
     <form className="morse_code_translator" autoComplete="off">
-      <div className="languages_boxes">
-        <button
-          className={`language_button${
-            i18n.language === "en" ? " active" : ""
-          }`}
-          type="button"
-          onClick={() => i18n.changeLanguage("en")}
-        >
-          en
-        </button>
-        <button
-          className={`language_button${
-            i18n.language === "az" ? " active" : ""
-          }`}
-          type="button"
-          onClick={() => i18n.changeLanguage("az")}
-        >
-          az
-        </button>
-      </div>
-      <h1>
-        <Trans
-          i18nKey="home.title"
-          components={{
-            1: (
-              <a
-                target="_blank"
-                href="https://www.britannica.com/topic/Morse-Code"
-              />
-            ),
-          }}
-        />
-      </h1>
-
       <div className="input_boxes">
         <div className="input_box">
           <div className="input_box_tools">
@@ -87,6 +55,16 @@ const MorseCodeTranlator: FC = () => {
                   }, 500);
                 }}
               />
+              <FaVolumeUp
+                data-tooltip-id="volume_tooltip"
+                data-tooltip-content={t("home.audio")}
+                className="input_box_tools_icon"
+                onClick={async () => {
+                  if (values.base_text && !playing)
+                    text_to_audio(values.base_text);
+                }}
+              />
+
               <Tooltip place="top" id="copy_tooltip" />
             </div>
 
@@ -120,7 +98,7 @@ const MorseCodeTranlator: FC = () => {
               <FaRegCopy
                 data-tooltip-id="copy_tooltip"
                 data-tooltip-content={
-                  clickedCopy2 ? "Copied 💜" : "Click to copy"
+                  clickedCopy2 ? t("home.copied") : t("home.copy")
                 }
                 className="input_box_tools_icon"
                 onClick={() => {
@@ -133,12 +111,45 @@ const MorseCodeTranlator: FC = () => {
               />
               <FaVolumeUp
                 data-tooltip-id="volume_tooltip"
-                data-tooltip-content="Play audio"
+                data-tooltip-content={t("home.audio")}
                 className="input_box_tools_icon"
-                onClick={() => {
-                  if (values.morse_code) play_morse_code(values.morse_code);
+                onClick={async () => {
+                  if (values.morse_code && !playing) {
+                    setPlaying(true);
+                    await play_morse_code(values.morse_code, fr, sp);
+                    setPlaying(false);
+                  }
                 }}
               />
+
+              <select
+                name="morse_hz"
+                id="morse_hz"
+                onChange={(e) => {
+                  setFr(+e.target.value);
+                }}
+              >
+                <option value="440">440 fr</option>
+                <option value="660">660 fr</option>
+                <option value="880">880 fr</option>
+                <option value="1100">1100 fr</option>
+                <option value="1320">1320 fr</option>
+                <option value="1540">1540 fr</option>
+                <option value="1760">1760 fr</option>
+              </select>
+
+              <select
+                name="morse_hz"
+                id="morse_hz"
+                onChange={(e) => {
+                  setSp(+e.target.value);
+                }}
+              >
+                <option value="150">150 sp</option>
+                <option value="200">200 sp</option>
+                <option value="250">250 sp</option>
+                <option value="300">300 sp</option>
+              </select>
 
               <Tooltip place="top" id="copy_tooltip" />
               <Tooltip place="top" id="volume_tooltip" />
@@ -166,10 +177,6 @@ const MorseCodeTranlator: FC = () => {
           ></textarea>
         </div>
       </div>
-
-      <button type="button" onClick={() => navigate("/about")}>
-        {t("home.about_button")}
-      </button>
     </form>
   );
 };

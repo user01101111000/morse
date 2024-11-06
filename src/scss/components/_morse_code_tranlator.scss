@@ -1,27 +1,12 @@
 @use "../base/color" as colors;
 
 .morse_code_translator {
-  width: 60rem;
+  width: 100%;
   font-weight: bold;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: clamp(1rem, 4vw, 2rem);
-
-  .languages_boxes {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    gap: 1rem;
-    .language_button {
-      padding: 0.7rem !important;
-    }
-
-    .active {
-      background-color: colors.$purple-light-extra;
-    }
-  }
 
   h1 {
     text-align: center;
@@ -47,6 +32,9 @@
       .input_box_tools {
         width: 100%;
         display: flex;
+        flex-wrap: wrap;
+
+        gap: 1rem;
 
         justify-content: space-between;
         align-items: center;
@@ -56,11 +44,30 @@
 
         .input_box_tools_header {
           display: flex;
+          align-items: center;
           gap: 0.8rem;
+          flex-wrap: wrap;
+
+          #morse_hz {
+            background-color: transparent;
+            border: 0.5px solid rgba(255, 255, 255, 0.37);
+            color: rgba(255, 255, 255, 0.9);
+            border-radius: 5px;
+            padding: 0.1rem;
+            font-weight: 500;
+
+            option {
+              background-color: colors.$purple-dark;
+              color: rgba(255, 255, 255, 0.9);
+            }
+          }
         }
         .input_box_tools_footer {
+          display: flex;
+          gap: 0.5rem;
         }
         .input_box_tools_icon {
+          font-size: 1rem;
           color: rgba(255, 255, 255, 0.9);
           cursor: pointer;
         }

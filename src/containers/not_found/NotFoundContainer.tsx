@@ -13,7 +13,7 @@ const NotFoundContainer = () => {
       className="not_found"
     >
       <h1>{t("not_found.title")}</h1>
-      <button onClick={() => navigate("/")}>{t("about.go_home")}</button>
+      <button onClick={() => navigate("/")}>{t("not_found.go_home")}</button>
     </motion.section>
   );
 };

@@ -6,17 +6,14 @@
     "copy": "Köçürmək üçün kliklə",
     "copied": "Köçürüldü 💜",
     "clear": "Hamısını sil",
+    "audio": "Səsi çal",
     "enter_text": "Mətni daxil et",
-    "about_button": "Samuel Morse haqqında"
-  },
-
-  "about": {
-    "about_samuel_morse": "Samuel Morse (1791–1872), uzaq məsafəli rabitədə çığır açan Morse kodunun həmmüəllifi olan amerikalı ixtiraçı və rəssam idi. Əvvəlcə rəssam kimi təhsil alan Morse, Yale Universitetində oxudu və sənətə marağı ilə yanaşı, xüsusən də elektrik sahəsindəki yeni elmi yeniliklərə xüsusi maraq göstərdi. O, portretləri ilə tanınan nüfuzlu bir sənətkar oldu və bacarıqlarını inkişaf etdirmək üçün Avropaya səyahət etdi. Lakin 1830-cu illərdə onun karyerası əhəmiyyətli bir dönüş nöqtəsi yaşadı və Morse teleqrafçılıq və rabitə texnologiyasına diqqətini yönəltdi. 1832-ci ildə Morse Avropadan ABŞ-a gedərkən dəniz səyahəti zamanı elektrik teleqrafı ideyasını inkişaf etdirdi. Onun 1837-ci ildə patentini aldığı tək telli teleqraf dizaynı, əvvəlki çox telli modellərə nisbətən daha praktik idi. Morse, bu dizaynını təkmilləşdirmək və geniş miqyasda tətbiq etmək üçün Alfred Vail ilə əməkdaşlıq etdi. Morse və Vail, hərfləri və rəqəmləri təmsil edən nöqtə və tirelərdən ibarət Morse kodunu hazırladılar. Bu kod, uzun məsafələrdə mesajların səmərəli ötürülməsini təmin edirdi.",
-    "about_samuel_morse2": " Morse 1844-cü ildə Vaşinqton D.C. və Baltimor arasında `Tanrı nə yaratdı` (`What hath God wrought`) sözləri ilə ilk uğurlu uzunməsafəli teleqraf mesajını göndərdi; bu hadisə rabitə tarixində mühüm bir dönüm nöqtəsi idi. Morse-un teleqrafı və Morse kodu sənayeni, hərbi rabitəni və gündəlik həyatı dərindən dəyişdirərək real vaxtda uzun məsafəli rabitəni ilk dəfə mümkün etdi. Morse-un töhfələri gələcək texnoloji inkişafların təməlini qoydu və həm elm, həm də tarix sahəsində davamlı bir miras buraxdı.",
-    "go_home": "Əsas səhifəyə qayıt"
+    "fr": "Tezlik",
+    "sp": "Sürət"
   },
 
   "not_found": {
-    "title": "Səhifə tapılmadı !"
+    "title": "Səhifə tapılmadı !",
+    "go_home": "Əsas səhifəyə qayıt"
   }
 }
