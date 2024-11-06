@@ -1,0 +1,15 @@
+@use "../base/color" as colors;
+
+.layout {
+  min-height: 100dvh;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: colors.$base-color;
+  color: colors.$font-color;
+
+  overflow-x: hidden;
+}

@@ -1,0 +1,93 @@
+@use "../base/color" as colors;
+
+.morse_code_translator {
+  width: 60rem;
+  font-weight: bold;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 4vw, 2rem);
+
+  h1 {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    font-weight: 400;
+    user-select: none;
+    line-height: 1.2;
+
+    a {
+      font-weight: bold;
+      color: colors.$purple-light-extra;
+      cursor: pointer;
+    }
+  }
+
+  .input_boxes {
+    display: flex;
+    gap: clamp(1rem, 4vw, 2rem);
+    font-size: clamp(0.8rem, 3vw, 1rem);
+    .input_box {
+      width: 100%;
+      border: 1px solid colors.$purple-light;
+      .input_box_tools {
+        width: 100%;
+        display: flex;
+
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background-color: colors.$purple-dark;
+        color: rgba(255, 255, 255, 0.9);
+
+        .input_box_tools_header {
+          display: flex;
+          gap: 0.8rem;
+        }
+        .input_box_tools_footer {
+        }
+        .input_box_tools_icon {
+          color: rgba(255, 255, 255, 0.9);
+          cursor: pointer;
+        }
+      }
+
+      #base_text {
+        width: 100%;
+
+        border: none;
+        outline: none;
+        resize: none;
+
+        background-color: transparent;
+        color: rgba(255, 255, 255, 0.9);
+        padding: 1rem;
+        line-height: 1.5;
+
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.466);
+        }
+      }
+    }
+  }
+
+  button {
+    padding: 1rem;
+    font-size: clamp(0.8rem, 3vw, 1rem);
+    border: 1px solid colors.$purple-light;
+    background-color: colors.$purple-dark;
+    color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: colors.$purple-light;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .input_boxes {
+    flex-direction: column;
+  }
+}
