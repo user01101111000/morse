@@ -52,3 +52,9 @@
     }
   }
 }
+
+@media screen and (max-width: 300px) {
+  .about_area {
+    flex-direction: column;
+  }
+}

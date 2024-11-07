@@ -35,7 +35,7 @@
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 
-    &:hover {
+    &:not(.active):hover {
       background-color: colors.$purple-light;
     }
   }

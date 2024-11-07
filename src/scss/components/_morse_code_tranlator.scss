@@ -57,6 +57,8 @@
             font-weight: 500;
             font-size: clamp(0.7rem, 3vw, 0.9rem);
 
+            cursor: pointer;
+
             option {
               background-color: colors.$purple-dark;
               color: rgba(255, 255, 255, 0.9);
