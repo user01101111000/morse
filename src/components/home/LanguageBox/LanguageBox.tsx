@@ -1,13 +1,19 @@
 import { useTranslation } from "react-i18next";
 import { Tooltip } from "react-tooltip";
+import { ILanguage } from "../../../types/components/MorseCodeTranlator";
 
 const LanguageBox = () => {
+  const langs: ILanguage = { en: "en", az: "az", tr: "tr" };
   const { i18n } = useTranslation();
+
+  const current_language = langs[i18n.language] || "en";
 
   return (
     <div className="languages_boxes">
       <button
-        className={`language_button${i18n.language === "en" ? " active" : ""}`}
+        className={`language_button${
+          current_language === "en" ? " active" : ""
+        }`}
         type="button"
         onClick={() => i18n.changeLanguage("en")}
         data-tooltip-id="en"
@@ -21,7 +27,9 @@ const LanguageBox = () => {
         </figure>
       </button>
       <button
-        className={`language_button${i18n.language === "az" ? " active" : ""}`}
+        className={`language_button${
+          current_language === "az" ? " active" : ""
+        }`}
         type="button"
         onClick={() => i18n.changeLanguage("az")}
         data-tooltip-id="az"
@@ -36,7 +44,9 @@ const LanguageBox = () => {
       </button>
 
       <button
-        className={`language_button${i18n.language === "tr" ? " active" : ""}`}
+        className={`language_button${
+          current_language === "tr" ? " active" : ""
+        }`}
         type="button"
         onClick={() => i18n.changeLanguage("tr")}
         data-tooltip-id="tr"
