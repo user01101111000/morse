@@ -12,7 +12,7 @@
     figure {
       cursor: pointer;
 
-      width: 2rem;
+      width: clamp(1.5rem, 5vw, 2rem);
       height: auto;
 
       img {
@@ -27,7 +27,7 @@
   }
 
   button {
-    padding: 1rem;
+    padding: clamp(0.5rem, 2vw, 1rem);
     font-size: clamp(0.8rem, 3vw, 1rem);
     border: 1px solid colors.$purple-light;
     background-color: colors.$purple-dark;

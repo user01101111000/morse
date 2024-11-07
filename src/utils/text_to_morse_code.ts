@@ -59,7 +59,7 @@ function text_to_morse_code(text: string): string {
     .toUpperCase()
     .split("")
     .map((char) => {
-      return morseCodeMap[char] || "";
+      return morseCodeMap[char] || "#";
     })
     .join(" ");
 }

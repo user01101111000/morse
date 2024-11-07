@@ -1,26 +1,26 @@
 function createWavFile(letter: string, fr: number, sp: number) {
-  const sampleRate = 44100;
-  const dotDuration = sp / 1000;
-  const dashDuration = dotDuration * 3;
-  const silenceDuration = dotDuration;
+  const sampleRate: number = 44100;
+  const dotDuration: number = sp / 1000;
+  const dashDuration: number = dotDuration * 3;
+  const silenceDuration: number = dotDuration;
 
-  const totalDuration =
-    letter.length * 1.5 * (dotDuration + silenceDuration) + silenceDuration * 2;
-  const bufferLength = Math.ceil(sampleRate * totalDuration);
-  const audioBuffer = new Float32Array(bufferLength);
+  const totalDuration: number =
+    letter.length * 1.4 * (dotDuration + silenceDuration) + silenceDuration * 2;
+  const bufferLength: number = Math.ceil(sampleRate * totalDuration);
+  const audioBuffer: Float32Array = new Float32Array(bufferLength);
 
-  let bufferPos = 0;
+  let bufferPos: number = 0;
 
   function addTone(duration: number) {
-    const freq = (2 * Math.PI * fr) / sampleRate;
-    const length = Math.floor(duration * sampleRate);
+    const freq: number = (2 * Math.PI * fr) / sampleRate;
+    const length: number = Math.floor(duration * sampleRate);
     for (let i = 0; i < length; i++) {
       audioBuffer[bufferPos++] = Math.sin(i * freq);
     }
   }
 
   function addSilence(duration: number) {
-    const length = Math.floor(duration * sampleRate);
+    const length: number = Math.floor(duration * sampleRate);
     bufferPos += length;
   }
 
@@ -37,11 +37,11 @@ function createWavFile(letter: string, fr: number, sp: number) {
 
   addSilence(silenceDuration);
 
-  const wavData = encodeWAV(audioBuffer, sampleRate);
-  const blob = new Blob([wavData], { type: "audio/wav" });
-  const url = URL.createObjectURL(blob);
+  const wavData: ArrayBuffer = encodeWAV(audioBuffer, sampleRate);
+  const blob: Blob = new Blob([wavData], { type: "audio/wav" });
+  const url: string = URL.createObjectURL(blob);
 
-  const a = document.createElement("a");
+  const a: HTMLAnchorElement = document.createElement("a");
   a.style.display = "none";
   a.href = url;
   a.download = "morse_code.wav";
@@ -51,8 +51,8 @@ function createWavFile(letter: string, fr: number, sp: number) {
 }
 
 function encodeWAV(samples: Float32Array, sampleRate: number) {
-  const buffer = new ArrayBuffer(44 + samples.length * 2);
-  const view = new DataView(buffer);
+  const buffer: ArrayBuffer = new ArrayBuffer(44 + samples.length * 2);
+  const view: DataView = new DataView(buffer);
 
   writeString(view, 0, "RIFF");
   view.setUint32(4, 36 + samples.length * 2, true);
@@ -68,9 +68,9 @@ function encodeWAV(samples: Float32Array, sampleRate: number) {
   writeString(view, 36, "data");
   view.setUint32(40, samples.length * 2, true);
 
-  let offset = 44;
+  let offset: number = 44;
   for (let i = 0; i < samples.length; i++) {
-    const s = Math.max(-1, Math.min(1, samples[i]));
+    const s: number = Math.max(-1, Math.min(1, samples[i]));
     view.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7fff, true);
     offset += 2;
   }

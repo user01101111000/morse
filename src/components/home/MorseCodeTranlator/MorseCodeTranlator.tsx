@@ -7,10 +7,15 @@ import { Tooltip } from "react-tooltip";
 import text_to_morse_code from "../../../utils/text_to_morse_code";
 import { useTranslation } from "react-i18next";
 import { FaVolumeUp } from "react-icons/fa";
-import { IoMdDownload } from "react-icons/io";
+import { FaVolumeMute } from "react-icons/fa";
+import { MdFileDownload } from "react-icons/md";
+import { MdFileDownloadOff } from "react-icons/md";
+
 import { play_morse_code } from "../../../utils/morse_code_audio";
 import { text_to_audio } from "../../../utils/text_to_audio";
 import { download_morse_code } from "../../../utils/download_morse_code_audio";
+import { morse_text_schema } from "../../../utils/schema";
+import { FiAlertCircle } from "react-icons/fi";
 
 const MorseCodeTranlator: FC = () => {
   const [fr, setFr] = useState<number>(440);
@@ -22,13 +27,14 @@ const MorseCodeTranlator: FC = () => {
   const [clickedCopy, setClickedCopy] = useState<boolean>(false);
   const [clickedCopy2, setClickedCopy2] = useState<boolean>(false);
 
-  const { values, handleChange, handleBlur, setFieldValue } =
+  const { values, handleChange, handleBlur, setFieldValue, errors } =
     useFormik<IMorseCodeTranlatorInputs>({
       initialValues: {
         base_text: "",
         morse_code: "",
       },
       onSubmit: () => {},
+      validationSchema: morse_text_schema,
     });
 
   useEffect(() => {
@@ -38,7 +44,7 @@ const MorseCodeTranlator: FC = () => {
   return (
     <form className="morse_code_translator" autoComplete="off">
       <div className="input_boxes">
-        <div className="input_box">
+        <div className={`input_box${errors.base_text ? " error_border" : ""}`}>
           <div className="input_box_tools">
             <div className="input_box_tools_header">
               <h2>{t("home.text")}</h2>
@@ -47,13 +53,17 @@ const MorseCodeTranlator: FC = () => {
                 data-tooltip-content={
                   clickedCopy ? t("home.copied") : t("home.copy")
                 }
-                className="input_box_tools_icon"
+                className={`input_box_tools_icon${
+                  errors.base_text ? " deactive_copy" : ""
+                }`}
                 onClick={() => {
-                  navigator.clipboard.writeText(values.base_text);
-                  setClickedCopy(true);
-                  setTimeout(() => {
-                    setClickedCopy(false);
-                  }, 500);
+                  if (!errors.base_text && values.base_text) {
+                    navigator.clipboard.writeText(values.base_text);
+                    setClickedCopy(true);
+                    setTimeout(() => {
+                      setClickedCopy(false);
+                    }, 500);
+                  }
                 }}
               />
               <FaVolumeUp
@@ -65,8 +75,11 @@ const MorseCodeTranlator: FC = () => {
                     text_to_audio(values.base_text);
                 }}
               />
+              {errors.base_text && (
+                <FiAlertCircle className="input_box_error" />
+              )}
 
-              <Tooltip place="top" id="copy_tooltip" />
+              {!errors.base_text && <Tooltip place="top" id="copy_tooltip" />}
             </div>
 
             <div className="input_box_tools_footer">
@@ -101,27 +114,35 @@ const MorseCodeTranlator: FC = () => {
                 data-tooltip-content={
                   clickedCopy2 ? t("home.copied") : t("home.copy")
                 }
-                className="input_box_tools_icon"
+                className={`input_box_tools_icon${
+                  errors.base_text ? " deactive_copy" : ""
+                }`}
                 onClick={() => {
-                  navigator.clipboard.writeText(values.morse_code);
-                  setClickedCopy2(true);
-                  setTimeout(() => {
-                    setClickedCopy2(false);
-                  }, 500);
-                }}
-              />
-              <FaVolumeUp
-                data-tooltip-id="volume_tooltip"
-                data-tooltip-content={t("home.audio")}
-                className="input_box_tools_icon"
-                onClick={async () => {
-                  if (values.morse_code && !playing) {
-                    setPlaying(true);
-                    await play_morse_code(values.morse_code, fr, sp);
-                    setPlaying(false);
+                  if (!errors.base_text && values.morse_code) {
+                    navigator.clipboard.writeText(values.morse_code);
+                    setClickedCopy2(true);
+                    setTimeout(() => {
+                      setClickedCopy2(false);
+                    }, 500);
                   }
                 }}
               />
+              {errors.base_text ? (
+                <FaVolumeMute className="input_box_tools_icon" />
+              ) : (
+                <FaVolumeUp
+                  data-tooltip-id="volume_tooltip"
+                  data-tooltip-content={t("home.audio")}
+                  className="input_box_tools_icon"
+                  onClick={async () => {
+                    if (values.morse_code && !playing) {
+                      setPlaying(true);
+                      await play_morse_code(values.morse_code, fr, sp);
+                      setPlaying(false);
+                    }
+                  }}
+                />
+              )}
 
               <select
                 name="morse_hz"
@@ -152,20 +173,23 @@ const MorseCodeTranlator: FC = () => {
                 <option value="300">300 sp</option>
               </select>
 
-              <Tooltip place="top" id="copy_tooltip" />
               <Tooltip place="top" id="volume_tooltip" />
             </div>
 
             <div className="input_box_tools_footer">
-              <IoMdDownload
-                data-tooltip-id="download_tooltip"
-                data-tooltip-content="Download audio"
-                className="input_box_tools_icon"
-                onClick={() => {
-                  download_morse_code(values.morse_code, fr, sp);
-                }}
-              />
-
+              {errors.base_text ? (
+                <MdFileDownloadOff className="input_box_tools_icon" />
+              ) : (
+                <MdFileDownload
+                  data-tooltip-id="download_tooltip"
+                  data-tooltip-content="Download audio"
+                  className="input_box_tools_icon"
+                  onClick={() => {
+                    if (values.morse_code)
+                      download_morse_code(values.morse_code, fr, sp);
+                  }}
+                />
+              )}
               <Tooltip place="top" id="download_tooltip" />
             </div>
           </div>

@@ -26,9 +26,14 @@
     display: flex;
     gap: clamp(1rem, 4vw, 2rem);
     font-size: clamp(0.8rem, 3vw, 1rem);
+    .error_border {
+      border-color: rgba(255, 0, 0, 0.8) !important;
+    }
+
     .input_box {
       width: 100%;
       border: 1px solid colors.$purple-light;
+
       .input_box_tools {
         width: 100%;
         display: flex;
@@ -48,15 +53,26 @@
           gap: 0.8rem;
           flex-wrap: wrap;
 
+          .deactive_copy {
+            color: red !important;
+          }
+
+          .input_box_error {
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            text-align: center;
+            color: red;
+            font-weight: 500;
+          }
+
           #morse_hz {
             background-color: transparent;
             border: 0.5px solid rgba(255, 255, 255, 0.37);
             color: rgba(255, 255, 255, 0.9);
-            border-radius: 5px;
-            padding: 0.1rem;
+
+            padding: 0.2rem;
             font-weight: 500;
             font-size: clamp(0.7rem, 3vw, 0.9rem);
-
+            border-radius: 5px;
             cursor: pointer;
 
             option {
@@ -123,7 +139,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .input_boxes {
     flex-direction: column;
   }
