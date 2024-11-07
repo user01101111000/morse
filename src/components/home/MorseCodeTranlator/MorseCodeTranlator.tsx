@@ -10,6 +10,7 @@ import { FaVolumeUp } from "react-icons/fa";
 import { IoMdDownload } from "react-icons/io";
 import { play_morse_code } from "../../../utils/morse_code_audio";
 import { text_to_audio } from "../../../utils/text_to_audio";
+import { download_morse_code } from "../../../utils/download_morse_code_audio";
 
 const MorseCodeTranlator: FC = () => {
   const [fr, setFr] = useState<number>(440);
@@ -160,7 +161,9 @@ const MorseCodeTranlator: FC = () => {
                 data-tooltip-id="download_tooltip"
                 data-tooltip-content="Download audio"
                 className="input_box_tools_icon"
-                onClick={() => {}}
+                onClick={() => {
+                  download_morse_code(values.morse_code, fr, sp);
+                }}
               />
 
               <Tooltip place="top" id="download_tooltip" />
