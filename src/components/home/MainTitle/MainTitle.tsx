@@ -33,17 +33,23 @@ const MainTitle = () => {
         />
       </h1>
 
-      <div className="about_variables">
-        <p>fr : {t("home.fr")}</p>
-        <p>sp : {t("home.sp")}</p>
-        <a href="https://github.com/user01101111000/morse" target="_blank">
-          <FaGithub
-            data-tooltip-id="github"
-            data-tooltip-content="Github"
-            className="social_icon"
-          />
-        </a>
-        <Tooltip id="github" />
+      <div className="about_area">
+        <div></div>
+        <div className="about_variables">
+          <p>fr : {t("home.fr")},</p>
+          <p>sp : {t("home.sp")}</p>
+        </div>
+
+        <div className="social_icons">
+          <a href="https://github.com/user01101111000/morse" target="_blank">
+            <FaGithub
+              data-tooltip-id="github"
+              data-tooltip-content="Project source code"
+              className="social_icon"
+            />
+          </a>
+          <Tooltip id="github" />
+        </div>
       </div>
     </div>
   );
