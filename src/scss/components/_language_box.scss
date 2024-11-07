@@ -13,7 +13,7 @@
       cursor: pointer;
 
       width: clamp(1.5rem, 5vw, 2rem);
-      height: auto;
+      height: clamp(1rem, 5vw, 1.2rem);
 
       img {
         width: 100%;

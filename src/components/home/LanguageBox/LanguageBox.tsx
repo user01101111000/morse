@@ -1,6 +1,9 @@
 import { useTranslation } from "react-i18next";
 import { Tooltip } from "react-tooltip";
 import { ILanguage } from "../../../types/components/MorseCodeTranlator";
+import az_flag from "../../../assets/icons/az.webp";
+import us_flag from "../../../assets/icons/us.webp";
+import tr_flag from "../../../assets/icons/tr.webp";
 
 const LanguageBox = () => {
   const langs: ILanguage = { en: "en", az: "az", tr: "tr" };
@@ -20,10 +23,7 @@ const LanguageBox = () => {
         data-tooltip-content="English"
       >
         <figure>
-          <img
-            src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"
-            alt="us"
-          />
+          <img src={us_flag} alt="us" loading="lazy" />
         </figure>
       </button>
       <button
@@ -36,10 +36,7 @@ const LanguageBox = () => {
         data-tooltip-content="Azerbaijani"
       >
         <figure>
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Flag_of_Azerbaijan.svg"
-            alt="az"
-          />
+          <img src={az_flag} alt="az" loading="lazy" />
         </figure>
       </button>
 
@@ -53,10 +50,7 @@ const LanguageBox = () => {
         data-tooltip-content="Turkish"
       >
         <figure>
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/1200px-Flag_of_Turkey.svg.png"
-            alt="tr"
-          />
+          <img src={tr_flag} alt="tr" loading="lazy" />
         </figure>
       </button>
 
